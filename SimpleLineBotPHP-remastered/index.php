@@ -54,6 +54,14 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
 		}
+		else if(strtolower($userMessage) == 'Hello')
+		{
+			$message = "Good Morning!";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+			
+		}
 	}
 	
 
